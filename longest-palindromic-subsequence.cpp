@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// DP. O(n^2) time, O(n^2) space
 int longestPalindromicSubsequence(string s) {
     int n = s.size();
     // dp[i][j] means longest palindromic subsequence in string starting at index i and ending at j
