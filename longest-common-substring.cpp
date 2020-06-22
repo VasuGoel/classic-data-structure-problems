@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// DP. O(n^2) time, O(n^2) space
 string longestCommonSubstring(string s, string t) {
     int m = s.size(), n = t.size(), len = INT_MIN, endIndex = -1;
 
