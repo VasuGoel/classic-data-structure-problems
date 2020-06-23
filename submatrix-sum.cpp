@@ -19,9 +19,13 @@ int sumSubMatrix(vector<vector<int>> matrix, pair<int, int> tl, pair<int, int> b
         }
     }
 
-    // return sum of required submatrix
     int x1 = tl.first, y1 = tl.second, x2 = br.first, y2 = br.second;
-    return sum[x2][y2] - sum[x1-1][y2] - sum[x2][y1-1] + sum[x1-1][y1-1];
+    // return sum of required submatrix, sum[x2][y2] - sum[x1-1][y2] - sum[x2][y1-1] + sum[x1-1][y1-1]
+    int total = sum[x2][y2];
+    if(x1-1 >= 0)   total -= sum[x1-1][y2];
+    if(y1-1 >= 0)   total -= sum[x2][y1-1];
+    if(x1-1 >= 0 && y1-1 >= 0)  total += sum[x1-1][y1-1];
+    return total;
 }
 
 int main() {
