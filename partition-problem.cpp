@@ -21,6 +21,36 @@ bool canPartition(vector<int> nums) {
 }
 
 
+
+// Backtracking - Another approach. O(2^n) time, O(n) space
+bool backtrack(vector<int> nums, int index, vector<bool> chosen, int sum, int total) {
+    if(sum == total/2)    return true;
+    if(sum > total/2 || index == nums.size()) return false;
+
+    // iterate over all numbers starting from current index in recursion
+    for(int i = index; i < nums.size(); i++) {
+        // if current number is not chosen
+        if(!chosen[i]) {
+            chosen[i] = 1;  // choosen number
+            // recur with next index and current num added to sum
+            if(backtrack(nums, index+1, chosen, sum+nums[i], total))    return true;
+
+            // if above recursive call returns false unchoose current number (to be used by other recursive calls now) and try next
+            chosen[i] = 0;
+        }
+    }
+    return false;
+}
+
+bool canPartition(vector<int> nums) {
+    int total = accumulate(nums.begin(), nums.end(), 0);
+    if(total & 1 == 1)    return false;
+
+    return backtrack(nums, 0, vector<bool>(nums.size()), 0, total);
+}
+
+
+
 // DP. O(n^2) time, O(n^2) space
 bool subsetSum(vector<int> nums, int k) {
     int m = nums.size();
