@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// O(n^2) time, O(1) space
 vector<vector<int>> threeSum(vector<int> nums, int k) {
     int n = nums.size();
     sort(nums.begin(), nums.end());
