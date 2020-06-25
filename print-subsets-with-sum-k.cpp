@@ -64,8 +64,8 @@ vector<vector<int>> subsetSum(vector<int> nums, int k) {
 
 
 int main() {
-    vector<int> nums {1, 2, 3, 4, 5, 6, 7};
-    int k = 12;
+    vector<int> nums {1, 2, 3, 4, 5};
+    int k = 10;
 
     // recursive approach
     // subsetSum(nums, k, 0, 0, vector<int>());     
@@ -77,3 +77,18 @@ int main() {
     }
     return 0;
 }
+
+/*
+
+To recursively find subsets using DP table, start at bottom right, at check if sum can be obtained by excluding this element (i.e, dp[i-1][j] == dp[i][j])
+and push it in results and recur for remaining elements.
+
+    0  1  2  3  4  5  6  7  8  9  10
+0   1  0  0  0  0  0  0  0  0  0  0  
+1   1  1  0  0  0  0  0  0  0  0  0     --> For nums = {1, 2, 3, 4, 5}, subsets with sum, k = 10 are:
+2   1  1  1  1  0  0  0  0  0  0  0         {4, 3, 2, 1}, {5, 3, 2}, {5, 4, 1}
+3   1  1  1  1  1  1  1  0  0  0  0  
+4   1  1  1  1  1  1  1  1  1  1  1  
+5   1  1  1  1  1  1  1  1  1  1  1 
+
+*/
