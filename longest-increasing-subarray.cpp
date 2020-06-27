@@ -13,7 +13,6 @@ vector<int> longestIncreasingSubarray(vector<int> nums) {
             maxlen = len;
             end = i;
         }
-        cout << len << " " << maxlen << " " << end << endl;
     }
     return {nums.begin()+end-maxlen+1, nums.begin()+end+1};
 }
