@@ -8,7 +8,7 @@ int maxProductRodCutting(int n) {
 
     for(int i = 1; i <= n; i++) {
         for(int j = 1; j < i; j++) {
-            dp[i] = max(dp[i], j*dp[i-j]);
+            dp[i] = max(dp[i], dp[j]*dp[i-j]);
         }
     }
     return dp[n];
@@ -30,8 +30,8 @@ Ex: rod of length 4 can be cut so as to yeild various profits but the max is 4.
 1*3 = 3
 2*2 = 4     -> max product
 
-If we cut a rod of length 'i' into two pieces, 'j' and 'i-j', we can optimally find the max product as, dp[i] = max(dp[i], j*dp[i-j]), where 1 ≤ j < i
-For instance, dp[6] = maximum of (1*dp[5], 2*dp[4], 3*dp[3], 4*dp[2], 5*dp[1]) = max(6, 8, 9, 8, 5) = 9.
+If we cut a rod of length 'i' into two pieces, 'j' and 'i-j', we can optimally find the max product as, dp[i] = max(dp[i], dp[j]*dp[i-j]), where 1 ≤ j < i and dp[i] is the max product we can get by cutting rod of length 'i'
+For instance, dp[6] = maximum of (dp[1]*dp[5], dp[2]*dp[4], dp[3]*dp[3], dp[4]*dp[2], dp[5]*dp[1]) = max(6, 8, 9, 8, 6) = 9.
 
 nums:   0   1   2   3   4   5   6   7   8   9   10
 dp:     0   1   2   3   4   6   9   12  18  27  36
