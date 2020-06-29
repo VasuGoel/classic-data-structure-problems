@@ -55,7 +55,7 @@ int main() {
 
 /*
 
-Check out board: https://media.geeksforgeeks.org/wp-content/uploads/snake-and-ladders.jpg
+Check out board at: https://imgur.com/1mUUgDF
 
 curr cell   neighbor    min moves  
 
