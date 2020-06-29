@@ -12,7 +12,7 @@ bool validQueen(int n, vector<int> cols) {
     return true;
 }
 
-// recursive function to solve for row i
+// recursive function to solve for each row
 void solve(int n, int row, vector<int> cols, vector<vector<int>> &pos) {
     // if reached the last row, push current queen placements in 'cols' to 'pos' result vector
     if(row == n) {
@@ -25,7 +25,7 @@ void solve(int n, int row, vector<int> cols, vector<vector<int>> &pos) {
         cols.push_back(c);  // place queen
         if(validQueen(n, cols))   solve(n, row+1, cols, pos);       // check if this current placed queen has valid position, if true then recursively solve for next row
 
-        cols.pop_back();    // undo this position if invalid (above recursive call won't happen means we won't move to next row but try placing queen in another column)
+        cols.pop_back();    // undo/backtrack this position if invalid (above recursive call won't happen means we won't move to next row but try placing queen in another column)
     }
 }
 
