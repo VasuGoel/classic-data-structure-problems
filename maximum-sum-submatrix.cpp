@@ -1,6 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+int kadane(vector<int> &nums) {
+    int sum = 0, res = 0;
+    for(int num: nums) {
+        sum += num;
+        res = max(res, sum);
+        sum = max(sum, 0);
+    }
+    return res;
+}
+
+// O(m * n^2) time, O(n) space
+int maxSumSubmatrix(vector<vector<int>> &matrix) {
+    int m = matrix.size(), n = matrix[0].size(), res = 0, s;
+
+    for(int l = 0; l < n; l++) {
+        vector<int> sum(m);
+        for(int r = l; r < n; r++) {
+            for(int i = 0; i < m; i++)  sum[i] += matrix[i][r];     // maintain running sum of row
+
+            s = kadane(sum);
+            res = max(res, s);
+        }
+    }
+    return res;
+}
+
+int main() {
+    vector<vector<int>> matrix {{6,-5-7,4,-4}, {-9,3,-6,5,2}, {-10,4,7,-6,3}, {-8,9-3,3,-7}};
+    
+    cout << maxSumSubmatrix(matrix) << endl;
+    return 0;
+}
+
+
+// ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+
 // O(n^4) time, O(n^2) space
 int maxSumSubmatrix(vector<vector<int>> &matrix) {
     int m = matrix.size(), n = matrix[0].size();
