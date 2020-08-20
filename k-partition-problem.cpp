@@ -10,7 +10,7 @@ bool kPartition(vector<int> nums, int k, int index, vector<int> &chosen, int sum
     for(int i = index; i < nums.size(); i++) {
         if(!chosen[i]) {
             chosen[i] = k;  // mark this item for bucket k
-            if(kPartition(nums, k, index+1, chosen, sum+nums[i], target))   return true;
+            if(kPartition(nums, k, i+1, chosen, sum+nums[i], target))   return true;
 
             chosen[i] = 0;  // if above recursive call returns false, mark this item as not chosen
         }
